@@ -139,3 +139,23 @@ article #submitbutton {
 article p {
 	padding: 20px 0px;
 }
+
+/* the input has to be smaller */
+.numberInput {
+   font-size: 1em;
+   width: 3em;
+   clear: left;
+  }
+  
+.inputButton {
+		margin-left: 50%;
+		margin-right: auto;
+		margin-top: 20px;
+		text-align: center;
+}
+
+#wrapper {
+	color: green;
+	margin-left: 20%;
+	padding: 20px 0px;
+}

@@ -50,7 +50,8 @@
                <th>Activity</th>
 			   
                <th>Location</th>
-			   
+			   <th>Select which ones you are interested in</th>
+			   <th>How many people are going</th>
             </tr>
          </thead>
 		 <!-- add scripts to write out the variables for the activities so they can easily be changed later -->
@@ -63,6 +64,15 @@
                <td>
 				<script> document.write(activity1Location);</script>
 			   </td>
+			   <td>
+				 <input type="checkbox" id="axthrowing" value="35" />
+						<label for="axthrowing">($35.00)</label>
+			   </td>
+			   <td >
+			   
+				<input class="numberInput" type="number" min="6" max="24" id="axnum" value="6" />
+               <label for="axnum"> # of participants(6&#8209;24)</label>
+			   </td>
             </tr>
             <tr>
                <td>
@@ -71,9 +81,24 @@
                <td>
 				<script> document.write(activity2Location);</script>
                </td>
+			   <td>
+				 <input type="checkbox" id="curling" />
+						<label for="curling">($5)</label>
+			   </td>
+			   <td >
+			   
+				<input class="numberInput" type="number" min="1" max="10" id="curlnum" value="1" />
+               <label for="curlnum"> # of participants(1&#8209;10)</label>
+			   </td>
             </tr>
             <tr>
                <td>
+				<script> document.write(activity3Name);</script>
+               </td>
+               <td>
+				<script> document.write(activity3Location);</script>
+               </td>
+			    <td>
 				<script> document.write(activity3Name);</script>
                </td>
                <td>
@@ -87,9 +112,69 @@
                <td>
 				<script> document.write(activity4Location);</script>
                </td>
+			    <td>
+				<script> document.write(activity3Name);</script>
+               </td>
+               <td>
+				<script> document.write(activity3Location);</script>
+               </td>
             </tr>
          </tbody>
       </table>
    </article>
+  <!-- maybe do it this way later. 
+   <div id="wrapper">
+	   <p>Total Estimate: <span id="estimate"></span></p>
+   </div>
+  -->
+   <form>
+   
+            <input class="inputButton" type="submit" id="submit" value="Submit" />
+   </form>
+   
+      <script>
+		function calcTotal() { 
+			var itemTotal = 0; 
+			var item1 = document.getElementById("axthrowing"); 
+			var item2 = document.getElementById("curling"); 
+			var numAxP = document.getElementById("axnum").value;
+			var numCurlP = document.getElementById("curlnum").value; 
+			
+			//add up all the checked items
+			(item1.checked) ? (itemTotal += (numAxP*35)) : (itemTotal += 0); 
+			(item2.checked) ? (itemTotal += (numCurlP*5)) : (itemTotal += 0);
+			
+			
+			//convert to int and back to deal with float
+			var salesTaxRate = 0.07;
+			itemTotal *= 100;
+			var orderTotal = (itemTotal + (itemTotal * salesTaxRate)) / 100; 
+			
+			//Display what is owed.
+			alert( "Your total is $" + orderTotal);
+			//saving for later
+			//document.getElementById("estimate").innerHTML = "$" + orderTotal;
+			
+			
+		}
+		
+		//the form is automatically reset when the submit button is pushed so don't need
+		//this for that part,
+		//using it exclusively to reset the form when someone refreshes the page.
+		function resetForm() {
+	
+			document.getElementById("axnum").value = 6;
+			document.getElementById("curlnum").value = 1;
+			document.getElementById("axthrowing").checked =  false;
+			document.getElementById("curling").checked = false;			
+
+			
+		}
+
+		
+		document.getElementById("submit"). addEventListener("click", calcTotal, false);
+		//resets form when page is reloaded
+		window.addEventListener("load", resetForm, false);
+   </script>
 </body>
 </html>
