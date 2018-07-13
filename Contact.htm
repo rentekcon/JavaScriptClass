@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <!--
+      JavaScript 6th Edition
+      COntact Form for Fun things to do in Tempe
+
+      Author: Renee Slattery
+      Date:   June 4, 2018
+
+      Filename: Contact.htm
+   -->
+   <meta charset="utf-8" />
+   <meta name="viewport" content="width=device-width,initial-scale=1.0">
+   <title>Contact Form</title>
+   <link rel="stylesheet" href="styles.css" />
+	<script src="modernizr.custom.05819.js"></script>
+</head>
+
+<body>
+   <header>
+      <h1>
+        Send Contact info
+      </h1>
+   </header>
+<nav>
+		<a href="index.htm">Home</a> &nbsp; 
+		<a href="tempe.htm">Tempe</a> &nbsp; 
+		<a href="surround.htm">Surrounding Areas</a> &nbsp; 
+		<a href="Contact.htm">Contact Me</a>
+	</nav>
+   <article>
+      <h2>Contact Form</h2>
+      <form>
+        <fieldset id="contactinfo">
+          <legend><span>Contact Information</span></legend>
+          <label for="nameinput">
+            Name
+            <input type="text" id="nameinput" name="name" />
+          </label>
+          <label for="emailinput">
+            Email
+            <input type="email" id="emailinput" name="email" />
+          </label>
+          <label for="phoneinput">
+            Phone
+            <input type="text" id="phoneinput" name="phone" />
+          </label>
+        </fieldset>
+        <hr/>
+           
+        
+        <fieldset id="submitbutton">
+          <input type="submit" value="Submit" onclick="alert('Thanks for your order!');" />
+        </fieldset>
+     </form>
+   </article>
+</body>
+</html>
