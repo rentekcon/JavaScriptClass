@@ -7,14 +7,14 @@
       
 
       Author: Renee Slattery
-      Date:   June 4, 2018
+      Date:   June 18, 2018
 
       Filename: tempe.htm
    -->
    <meta charset="utf-8" />
    <meta name="viewport" content="width=device-width,initial-scale=1.0">
    <title>Tempe</title>
-   <link rel="stylesheet" href="styles.css" />
+   <link rel="stylesheet" media="screen and (min-device-width: 1000px)" href="styles.css" />
    <script src="modernizr.custom.05819.js"></script>
 </head>
 
@@ -35,13 +35,13 @@
       <h2>Activities and Locations</h2>
 		<script>
 			//initialize variables for activity names and locations 
-			var activity1Name = "Ax Throwing"; 
-			var activity2Name = "Curling Club"; 
-			var activity3Name = "TBD";
+			var activity1Name = "Ax Throwing - LumberJaxes"; 
+			var activity2Name = "Coyotes Curling Club"; 
+			var activity3Name = "Dance Lessons/Social Dancing - NRGBallroom";
 			var activity4Name = "TBD"; 
 			var activity1Location = "3105 S Fair Ln, Tempe, AZ 85282"; 
 			var activity2Location = "2202 W Medtronic Way, #101, Tempe, AZ 85281-5107"; 
-			var activity3Location = "TBD";
+			var activity3Location = "931 E Elliot Rd #101 Tempe, Arizona 85284";
 			var activity4Location = "TBD";
 		</script>
       <table>
@@ -99,11 +99,14 @@
 				<script> document.write(activity3Location);</script>
                </td>
 			    <td>
-				<script> document.write(activity3Name);</script>
-               </td>
-               <td>
-				<script> document.write(activity3Location);</script>
-               </td>
+				 <input type="checkbox" id="dancing" />
+						<label for="dancing">($10)</label>
+			   </td>
+			   <td >
+			   
+				<input class="numberInput" type="number" min="1" max="100" id="dancenum" value="1" />
+               <label for="dancenum"> # of participants(1&#8209;100)</label>
+			   </td>
             </tr>
             <tr>
                <td>
@@ -113,68 +116,21 @@
 				<script> document.write(activity4Location);</script>
                </td>
 			    <td>
-				<script> document.write(activity3Name);</script>
+				<script> document.write(activity4Name);</script>
                </td>
                <td>
-				<script> document.write(activity3Location);</script>
+				<script> document.write(activity4Location);</script>
                </td>
             </tr>
          </tbody>
       </table>
    </article>
-  <!-- maybe do it this way later. 
+  
    <div id="wrapper">
 	   <p>Total Estimate: <span id="estimate"></span></p>
    </div>
-  -->
-   <form>
-   
-            <input class="inputButton" type="submit" id="submit" value="Submit" />
-   </form>
-   
-      <script>
-		function calcTotal() { 
-			var itemTotal = 0; 
-			var item1 = document.getElementById("axthrowing"); 
-			var item2 = document.getElementById("curling"); 
-			var numAxP = document.getElementById("axnum").value;
-			var numCurlP = document.getElementById("curlnum").value; 
-			
-			//add up all the checked items
-			(item1.checked) ? (itemTotal += (numAxP*35)) : (itemTotal += 0); 
-			(item2.checked) ? (itemTotal += (numCurlP*5)) : (itemTotal += 0);
-			
-			
-			//convert to int and back to deal with float
-			var salesTaxRate = 0.07;
-			itemTotal *= 100;
-			var orderTotal = (itemTotal + (itemTotal * salesTaxRate)) / 100; 
-			
-			//Display what is owed.
-			alert( "Your total is $" + orderTotal);
-			//saving for later
-			//document.getElementById("estimate").innerHTML = "$" + orderTotal;
-			
-			
-		}
-		
-		//the form is automatically reset when the submit button is pushed so don't need
-		//this for that part,
-		//using it exclusively to reset the form when someone refreshes the page.
-		function resetForm() {
 	
-			document.getElementById("axnum").value = 6;
-			document.getElementById("curlnum").value = 1;
-			document.getElementById("axthrowing").checked =  false;
-			document.getElementById("curling").checked = false;			
-
-			
-		}
-
-		
-		document.getElementById("submit"). addEventListener("click", calcTotal, false);
-		//resets form when page is reloaded
-		window.addEventListener("load", resetForm, false);
-   </script>
+	
+   <script src="tempe.js"></script>
 </body>
 </html>
