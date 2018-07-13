@@ -14,7 +14,7 @@
    <meta name="viewport" content="width=device-width,initial-scale=1.0">
    <title>Contact Form</title>
    <link rel="stylesheet" href="styles.css" />
-	<script src="modernizr.custom.05819.js"></script>
+	<script src="modernizr.custom.58072.js"></script>
 </head>
 
 <body>
@@ -36,24 +36,42 @@
           <legend><span>Contact Information</span></legend>
           <label for="nameinput">
             Name
-            <input type="text" id="nameinput" name="name" />
+            <input type="text" id="nameinput" name="name" placeholder="first and last name" />
           </label>
           <label for="emailinput">
             Email
-            <input type="email" id="emailinput" name="email" />
+            <input type="email" id="emailinput" name="email" placeholder="address@example.com"/>
           </label>
           <label for="phoneinput">
             Phone
-            <input type="text" id="phoneinput" name="phone" />
+            <input type="text" id="phoneinput" name="phone" placeholder="###-###-####"/>
           </label>
         </fieldset>
         <hr/>
-           
-        
+               
         <fieldset id="submitbutton">
-          <input type="submit" value="Submit" onclick="alert('Thanks for your order!');" />
+          <input type="submit" value="Submit" onclick="alert('I\'ll put you on the mailing list!');" />
         </fieldset>
      </form>
    </article>
+   <script>
+   
+	//On the contact page put in place holders for the 
+	function insertPlaceholders() { 
+		if (!Modernizr.input.placeholder) {
+			document.getElementById("nameinput").value = "first and last name";
+			document.getElementById("emailinput").value = "address@example.com";
+			document.getElementById("phoneinput").value = "###-###-####"; 
+		}
+	}
+
+	//Put in the event listeners based on compatibility
+	if (window.addEventListener) 
+		window.addEventListener("load",  insertPlaceholders, false);
+	 else if (window.attachEvent) 
+		window.attachEvent("onload", insertPlaceholders);
+	 
+
+	</script>
 </body>
 </html>
