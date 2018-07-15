@@ -125,11 +125,30 @@ article table th {
    border-bottom: 3px solid black;
 }
 
-article #contactinfo {
+article #contactinfo, #message, #area {
 	padding: 20px;
 
 /* add padding between the contact portion */
 	
+}
+/*legend {
+   font-weight: bold;
+   font-size: 36px;
+   font-family: tangerine, cursive;
+   position: absolute;
+   padding: 10px 0;
+}
+*/
+
+#errorText {
+   display: none;
+   text-align: center;
+   padding: 10px;
+   margin: 0 auto;
+   margin: 15px 15px 0;
+   background: rgb(124,124,136);
+   color: white;
+   border: 2px solid rgb(190,50,38);
 }
 
 article #submitbutton {
@@ -139,6 +158,23 @@ article #submitbutton {
 article p {
 	padding: 20px 0px;
 }
+
+fieldset div.errorMessage {
+   display: none;
+   color: red;
+   margin-top: 10px;
+}
+
+
+
+fieldset.checks textarea {
+   margin-left: 21px;
+   width: 90%;
+   height: 50px;
+   margin-top: 10px;
+}
+
+
 
 /* the input has to be smaller */
 .numberInput {

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <!--
+      JavaScript 6th Edition
+      Chapter 6
+      Chapter case
+
+      Tempe Places contact form results
+      Author: Renee Slattery
+      Date:   June 25, 2018
+
+      Filename: results.htm
+   -->
+   <meta charset="utf-8" />
+   <meta name="viewport" content="width=page-width, initial-scale=1.0">
+   <title>Fun Things In Tempe - Submitted Data</title>
+   <link rel="stylesheet" href="snoot.css" />
+   <link href='http://fonts.googleapis.com/css?family=Tangerine' rel='stylesheet' type='text/css'>
+   <script src="modernizr.custom.65897.js"></script>
+</head>
+
+<body>
+   <div class="container">
+      <header>
+         <h1>
+            Contact Info for Things to do in Tempe
+         </h1>
+      </header>
+   
+      <nav>
+         <ul>
+        <a href="index.htm">Home</a> &nbsp; 
+		<a href="tempe.htm">Tempe</a> &nbsp; 
+		<a href="surround.htm">Surrounding Areas</a> &nbsp; 
+		<a href="webSecurity.htm">Web Security</a>
+		<a href="contact.htm">Contact Me</a>
+         </ul>
+      </nav>
+   </div>
+      
+   <article>
+      <h2>Your form has been submitted</h2>
+      <div class="results">
+         <h3>You entered the following data:</h3>
+   
+         <script>
+             var formData = location.search;
+             formData = formData.substring(1, formData.length);
+             while (formData.indexOf("+") !== -1) {
+                formData = formData.replace("+", " ");
+             }
+             formData = decodeURIComponent(formData);
+             var formArray = formData.split("&");
+             for (var i = 0; i < formArray.length; i = i + 1) {
+                document.write("<p>" + formArray[i] + "</p>");
+             }
+         </script>
+      </div>
+   </article>
+   
+</body>
+</html>

@@ -37,7 +37,23 @@
 	</nav>
    <article>
       <h2>Contact Form</h2>
-      <form name="formContact">
+	  <div id="errorText"></div>
+      <form name="formContact" action="results.htm" nonvalidate="novalidate">
+	  <fieldset id="demographics" class="text">
+          <legend><span>Demographic information</span></legend>
+          <div id="area" class="inline">
+               <input id="Tempelocal" name="demograph" type="radio" value="Tempe" />
+               <label for="Tempelocal">Live in Tempe</label>
+               <input id="outofstate" name="demograph" type="radio" value="OOS" />
+               <label for="outofstate">Moved here recently</label>
+               <input id="phx" name="demograph" type="radio" value="Phoenix" />
+               <label for="phx">Live in Phoenix</label>
+               <input id="surround" name="demograph" type="radio" value="Surround" />
+               <label for="surround">Surrounding Area</label>
+            </div>
+			<div class="errorMessage"></div>
+        </fieldset>
+        <hr/>
         <fieldset id="contactinfo">
           <legend><span>Contact Information</span></legend>
           <label for="nameinput">
@@ -52,106 +68,29 @@
             Phone
             <input type="text" id="phoneinput" name="phone" placeholder="###-###-####"/>
           </label>
+		  <div class="errorMessage"></div>
         </fieldset>
         <hr/>
-               
-        <fieldset id="submitbutton">
+         <fieldset id="message" class="checks">
+            <legend>Message</legend>
+            <input id="more" name="MoreInfo" type="checkbox" />
+            <label for="more">Send me more information</label>
+            <input id="join" name="JoinGroup" type="checkbox" />
+            <label for="join">I want to join your group</label>
+            <input id="custom" name="CustomMessage" type="checkbox" />
+            <label for="custom">Other:</label>
+            <textarea id="customText" name="CustomText" placeholder="Enter custom message here (max 250 characters)"></textarea>
+            <div class="errorMessage"></div>
+          </fieldset>      
+        <div id="submitbutton">
           <input type="submit" value="Submit"  id="sButton"/>
+		</div>
         </fieldset>
      </form>
    </article>
-   <script>
+   <script src="contact.js">
    
-	//On the contact page put in place holders for the 
-	function insertPlaceholders() { 
-		if (!Modernizr.input.placeholder) {
-			document.getElementById("nameinput").value = "first and last name";
-			document.getElementById("emailinput").value = "address@example.com";
-			document.getElementById("phoneinput").value = "###-###-####"; 
-		}
-	}
 	
-	//check to see if the data in the name is numeric
-	function checkForm(){
-	
-		//Check to see if there are numbers in the name
-		var numbers = /^[0-9]+$/;
-		var inputname = document.formContact.name;
-		var inputemail = document.formContact.email;
-		var inputphone = document.formContact.phone;
-		try{
-			if(inputname.value.match(numbers))
-				throw "1";
-			//check to see if there are values in the other fieldset
-			else if (inputname.value === "")
-				throw "2";
-			else if(inputemail.value === "")
-				throw "3";
-			else if(inputphone.value === "" || !inputphone.value.match(numbers))
-				throw "4";
-			else
-				alert("I\'ll put you on the mailing list!"); 
-		}
-		catch(message){
-			//display an error, clear out the name on the form and set focus on the name
-			//because it's a button it automatically clears the form
-			//saving for later incase I want to change it.
-			switch(message) {
-				case "1":
-					alert("Numbers are not allowed in a name");
-					//document.formContact.name.value = "";
-					//document.formContact.name.focus();
-					break;
-				case "2":
-					alert("You must enter a name");
-					//document.formContact.name.value = "";
-					//document.formContact.name.focus();
-					break;
-				case "3":
-					alert("You must enter an email address");
-					document.formContact.email.value = "";
-					document.formContact.email.focus();
-					break;
-				case "4":
-					alert("You must enter a phone number");
-					//document.formContact.phone.value = "";
-					//document.formContact.phone.focus();
-					break;	
-				default:
-					alert(message);
-					break;
-			}	
-		}
-		
-	}
-	
-	function createEventListeners(){
-	
-		//add an event listener for the button
-		var sbutton = document.getElementById("sButton"); 
-		if (sbutton.addEventListener) {
-			sbutton.addEventListener("click", checkForm, false);
-		} 
-		else if (sbutton.attachEvent) { 
-			sbutton.attachEvent("onclick", checkForm);
-		}
-	}
-	
-	/* create event listeners and populate the placeholders */
-	function setUpPage() {
-		createEventListeners();
-		insertPlaceholders();
-	}
-
-
-
-	//Put in the event listeners based on compatibility
-	if (window.addEventListener) 
-		window.addEventListener("load",  setUpPage, false);
-	 else if (window.attachEvent) 
-		window.attachEvent("onload", setUpPage);
-	 
-
 	</script>
 </body>
 </html>
