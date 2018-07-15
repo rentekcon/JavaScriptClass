@@ -30,11 +30,12 @@
 		<a href="surround.htm">Surrounding Areas</a> &nbsp; 
 		<a href="webSecurity.htm">Web Security</a>
 		<a href="contact.htm">Contact Me</a>
+		<a href="calcDateDiff.htm">Date Calculator</a>
 	</nav>
    <article>
       <h2>Introduction to Web Security</h2>
 	  <h1 id="subtitle">Navigator and Screen objects</h1>
-	  </br>
+	  <br>
 	  
 	  <script>
 			//initialize variables for the objects I'm going to display 
@@ -142,22 +143,69 @@
             </tr>
          </tbody>
       </table>
-	  </br>
+	  <br>
 	  <p class="webP"> 
 	  These are web sites that have information on how to use the web safely. Please read.
 	  </p>
 	  <ul>
-		<li><a href="https://www.helpnetsecurity.com/2010/07/19/10-steps-for-safe-web-surfing/">Help Net Security</a></br>
+		<li><a href="https://www.helpnetsecurity.com/2010/07/19/10-steps-for-safe-web-surfing/">Help Net Security</a><br>
 			This web site give you 10 steps to be more secure on the web. It's rather brief.    </li>
-		<li><a href="http://www.veracode.com/blog/2013/01/tips-for-secure-web-browsing-cybersecurity-101">Tips for Secure Web Browsing: Cybersecurity 101</a></br>
+		<li><a href="http://www.veracode.com/blog/2013/01/tips-for-secure-web-browsing-cybersecurity-101">Tips for Secure Web Browsing: Cybersecurity 101</a><br>
 			This web site is different from the other one as it goes into phishing, private polies, and banking online.</li>
-		<li><a href="https://www.wikihow.com/Be-Safe-on-the-Internet">How to Be Safe on the Internet</a>  </br>
+		<li><a href="https://www.wikihow.com/Be-Safe-on-the-Internet">How to Be Safe on the Internet</a>  <br>
 			This is on wikiHow and it gives an overview and links to an Internet Safety Cheat Sheet, plus Social Media and other safety tips, including your phone.</li>
-		<li><a href="https://askleo.com/internet_safety_7_steps_to_keeping_your_computer_safe_on_the_internet/">Internet Safety: 7 Steps to Keeping Your Computer Safe on the Internet</a></br>
+		<li><a href="https://askleo.com/internet_safety_7_steps_to_keeping_your_computer_safe_on_the_internet/">Internet Safety: 7 Steps to Keeping Your Computer Safe on the Internet</a><br>
 			He has good tips and links to more information if his brief information isn't enough.</li>
 		
 	  </ul>
 	
    </article>
+   <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=true"></script>
+   <script type="text/javascript" > 
+   if (navigator.geolocation) {
+       navigator.geolocation.getCurrentPosition(function (p) {
+        var LatLng = new google.maps.LatLng(p.coords.latitude, p.coords.longitude);
+        var mapOptions = {
+            center: LatLng,
+            zoom: 13,
+            mapTypeId: google.maps.MapTypeId.ROADMAP
+        };
+        var map = new google.maps.Map(document.getElementById("dvMap"), mapOptions);
+		var marker = new google.maps.Marker({
+            position: LatLng,
+            map: map,
+            title: "<div style = 'height:60px;width:200px'><b>Your location:</b><br />Latitude: " + p.coords.latitude + "<br />Longitude: " + p.coords.longitude
+        });
+        google.maps.event.addListener(marker, "click", function (e) {
+            var infoWindow = new google.maps.InfoWindow();
+            infoWindow.setContent(marker.title);
+            infoWindow.open(map, marker);
+        });
+		//put the information
+		var currentposition = document.querySelectorAll("div p");
+		currentposition[0].innerHTML += p.coords.longitude; 
+		currentposition[1].innerHTML += p.coords.latitude;
+		currentposition[2].innerHTML += p.coords.altitude;
+
+		//
+	   
+    });
+} else {
+    alert('Geo Location feature is not supported in this browser.');
+}</script>
+   <article id="location">
+      
+      <div id="directions"></div>
+	  <div id="legend">
+	  <legend> Where you are on the map</legend>
+	  <p>  Current longitude: </p>
+	  <p>  Current latitude: </p>
+	  <p>  Current altitude: </p>  
+	  </div>
+	  <div id="dvMap" style="width: 500px; height: 500px">
+   </article>
+    
+
+   
 </body>
 </html>

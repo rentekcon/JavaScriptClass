@@ -1,0 +1,61 @@
+/*  JavaScript 6th Edition
+    Chapter 12
+    Chapter case
+
+    New Style sheet for JQuery menu on the home page
+
+    Filename: index.css
+*/
+
+
+/* navigation */
+nav {
+   float: left;
+   font-size: 16px;
+   width: 100%
+   text-align: center;
+}
+
+
+
+nav ul li {
+   
+   display: block;
+   float: left;
+   
+}
+
+nav ul li p {
+   padding-left: 15px;
+   padding-bottom: 10px;
+   font-size: 1.4em;
+}
+
+nav ul li:hover {
+   background: white;
+}
+
+nav ul ul {
+   position: relative;
+   z-index: 10;
+   display: none;
+ 
+}
+
+nav ul ul.show {
+   display: block;
+}
+
+nav ul ul li {
+   clear: left;
+   text-align: left;
+   line-height: normal;
+   height: auto;
+   padding: 0.4em;
+   border: 2px solid rgb(33,46,65);
+}
+
+nav ul ul li:hover {
+   color: rgb(77,118,163);
+   background: white;
+}
