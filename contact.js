@@ -36,13 +36,17 @@ var ideaList = [];
 		var fieldsetValidity = true;
 		var errMsg = "Please complete the following Contact information:";
 		
-		//Check to see if there are numbers in the name
-		var numbers = /^[0-9]+$/;
+		//Create the regular expressions to check the input values.
+		var contactInfo = /[a-zA-z'-]+$/;
+		var numbers = /[0-9]/;
+		var emailPattern = /^[_a-zA-Z0-9\\-]+(\.[_a-zA-Z0-9\\-]+)* @[a-zA-Z0-9\\-]+(\.[a-zA-Z0-9\\-]+)*(\.[a-z]{2,6})$/;
+		var phonePattern =  /^(1 )?(\([0-9]{3}\) )?([1-9]{3}) (\-[1-9]{4})$/;
+		
 		var inputname = document.formContact.name;
 		var inputemail = document.formContact.email;
 		var inputphone = document.formContact.phone;
 		try{
-			if(inputname.value.match(numbers) || inputname.value === "") {
+			if(!contactInfo.test(inputname) || inputname.value === "" ) {
 				inputname.style.background = "rgb(255, 233, 233)";
 				fieldsetValidity = false;
 				errMsg += " Input a valid Name ";
@@ -51,14 +55,16 @@ var ideaList = [];
 			
 			//check to see if there are values in the other fieldset
 			
-			if(inputemail.value === "") {
+
+			if (!emailPattern.test(inputemail.value)|| inputemail.value === "" || inputemail.length > 256) {
 				inputemail.style.background = "rgb(255,233,233)";
 				fieldsetValidity = false;
 				errMsg += "Input a valid email address ";
 			} else 
 				inputemail.style.background = "white";
 				
-			if(inputphone.value === "" || !inputphone.value.match(numbers)) {
+			
+			if(inputphone.value === "" || !phonepattern.test(inputphone.value) {
 				inputphone.style.background = "rgb(255,233,233)";
 				fieldsetValidity = false;
 				errMsg += "Input a valid phone number";
@@ -169,10 +175,20 @@ var ideaList = [];
 	   var errorDiv = document.querySelector("#message .errorMessage");
 	   var msgBox = document.getElementById("customText");
 	   try {
+		   // custom checked but message box empty
 		  if (document.getElementById("custom").checked && ((msgBox.value === "") || (msgBox.value === msgBox.placeholder))) {
-			  // custom checked but message box empty
+			  
 			 throw "Please enter your message text.";
-		  } else {
+		  } 
+		  //there is data in there so check to see if it's got a code injection
+	   else if(/[<>]/.test(msgBox.value) === true ) {
+		   msgBox.value == "";
+		   throw "< or > not allowed in your message.";
+	   }
+	   else if(msgBox.value.length > 250)
+		   throw "Maximum length for message is 250";
+		//everything is hunkey dorey
+	   else {
 			 errorDiv.style.display = "none";
 			 msgBox.style.background = "white";
 		  }
