@@ -1,0 +1,154 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+   <!--
+      JavaScript 6th Edition
+      Chapter 7
+      Chapter case
+
+      Outer Orbits booking page
+      Author: 
+      Date:   
+
+      Filename: booktrip.htm
+   -->
+   <meta charset="utf-8" />
+   <meta name="viewport" content="width=device-width,initial-scale=1.0">
+   <title>Getting There - How Long is it?</title>
+   <link rel="stylesheet" href="calcDateDiff.css" />
+   <!--[if lt IE 9]>
+      <link rel="stylesheet" href="orbits.css" />
+   <![endif]-->
+   <link href='http://fonts.googleapis.com/css?family=Roboto:400,400italic,700,700italic' rel='stylesheet' type='text/css'>
+   <link href='http://fonts.googleapis.com/css?family=Racing+Sans+One' rel='stylesheet' type='text/css'>
+   <script src="modernizr.custom.65897.js"></script>
+</head>
+
+<body>
+   <header>
+      <h1>
+         
+         Are we there yet?
+      </h1>
+      <p>How long will it take? <span>&#10022;</span></p>
+   </header>
+
+   <nav>
+      
+         <a href="index.htm">Home</a> &nbsp; 
+		<a href="tempe.htm">Tempe</a> &nbsp; 
+		<a href="surround.htm">Surrounding Areas</a> &nbsp; 
+		<a href="webSecurity.htm">Web Security</a>
+		<a href="contact.htm">Contact Me</a>
+		<a href="calcDateDiff.htm">Date Calculator</a>
+      
+   </nav>
+      
+   <article>
+      <section id="ticket">
+         <h3>How many Years, Months & Days</h3>
+         
+         <div id="dateSection">
+            <h4>Years</h4>
+            <p id="yearDate"></p>
+         </div>
+         <div id="dateSection">
+            <h4>Months</h4>
+            <p id="montDate"></p>
+         </div>
+		 <div id="dateSection">
+            <h4>Days</h4>
+            <p id="daysDate"></p>
+         </div>
+      </section>
+      <form>
+         
+         <fieldset id="dateOne">
+            <legend>Pick a date</legend>
+            <input type="text" id="tripDate" />
+         </fieldset>
+         
+		 <fieldset id="dateTwo">
+            <legend>Pick another date</legend>
+            <input type="text" id="tripDate2" />
+         </fieldset>
+		  <div id="buttonContainer">
+            <input type="submit" value="Calculate the Difference" id="orderButton" />
+         </div>
+      </form>
+      <div id="cal">
+         <div id="prev">&lt; previous</div>
+         <div id="next">next &gt;</div>
+         <table>
+            <caption></caption>
+            <tr>
+               <th>Sun</th>
+               <th>Mon</th>
+               <th>Tue</th>
+               <th>Wed</th>
+               <th>Thu</th>
+               <th>Fri</th>
+               <th>Sat</th>
+            </tr>
+            <tr>
+               <td></td>
+               <td></td>
+               <td></td>
+               <td></td>
+               <td></td>
+               <td></td>
+               <td></td>
+            </tr>
+            <tr>
+               <td></td>
+               <td></td>
+               <td></td>
+               <td></td>
+               <td></td>
+               <td></td>
+               <td></td>
+            </tr>
+            <tr>
+               <td></td>
+               <td></td>
+               <td></td>
+               <td></td>
+               <td></td>
+               <td></td>
+               <td></td>
+            </tr>
+            <tr>
+               <td></td>
+               <td></td>
+               <td></td>
+               <td></td>
+               <td></td>
+               <td></td>
+               <td></td>
+            </tr>
+            <tr>
+               <td></td>
+               <td></td>
+               <td></td>
+               <td></td>
+               <td></td>
+               <td></td>
+               <td></td>
+            </tr>
+            <tr>
+               <td></td>
+               <td></td>
+               <td></td>
+               <td></td>
+               <td></td>
+               <td></td>
+               <td></td>
+            </tr>
+         </table>
+         <p id="close">close <span>&#9746;</span></p>
+      </div>
+   </article>
+   
+   <script src="calcDateDiff.js"></script>
+</body>
+</html>
