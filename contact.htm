@@ -19,7 +19,7 @@
    <meta name="viewport" content="width=device-width,initial-scale=1.0">
    <title>Contact Form</title>
    <link rel="stylesheet" href="styles.css" />
-	<script src="modernizr.custom.58072.js"></script>
+	<script src="modernizr.custom.65897.js"></script>
 </head>
 
 <body>
@@ -82,13 +82,39 @@
             <label for="custom">Other:</label>
             <textarea id="customText" name="CustomText" placeholder="Enter custom message here (max 250 characters)"></textarea>
             <div class="errorMessage"></div>
-          </fieldset>      
+          </fieldset>   
+
+		<fieldset id="options" >
+			<div id="interest">
+			<legend id="interest">What are you interested in learning about? (multi-selection allowed)</legend>
+		   <select id="selEvent" name="selEvent" size="4" multiple>
+			  <option value="dancing">Dancing</option>
+			  <option value="singing">Singing</option>
+			  <option value="slingshot">SlingShot</option>
+			  <option value="volleyball">Volleyball</option>
+			  <option value="skating">Skating</option>
+			  <option value="bowling">Bowling</option>
+			  <option value="aereal">Sky Diving</option>
+			  <option value="scuba">Learn Scuba</option>
+			  <option value="autosports">4-Wheeling</option>
+		   </select> 
+		   </div>
+		</fieldset>
+		
+		<fieldset>		  
         <div id="submitbutton">
           <input type="submit" value="Submit"  id="sButton"/>
-		  <audio id="sound" src = "jolly.wav" type = "audio/wav" preload="auto"></audio>
 		</div>
         </fieldset>
      </form>
+	  <section id="profile">
+         <h3>Ideas</h3>
+          <div id="ideasSection">
+            <h4>Preferred Activities</h4>
+            <ul id="profileIdeas"></ul>
+         </div>
+      </section>
+	 
    </article>
    <script src="contact.js">
    

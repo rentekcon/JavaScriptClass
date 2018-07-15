@@ -17,7 +17,7 @@
 /* global variables */
 
 var formValidity = true;
-
+var ideaList = [];
 
 //On the contact page put in place holders for the 
 	function insertPlaceholders() { 
@@ -126,9 +126,11 @@ var formValidity = true;
 		if(messageBox.value !== "" && messageBox.value !== messageBox.placeholder){
 			document.getElementById("custom").checked = "checked";
 		}
+		else //if there's nothing there uncheck the box
+			document.getElementById("custom").checked = false;
 	}
 
-	/* validate payment fieldset */
+	/* validate demographics fieldset */
 	function validateDemographics() {
 	   var errorDiv = document.querySelector("#demographics .errorMessage");
 	   var fieldsetValidity = true;
@@ -197,6 +199,7 @@ function validateForm(evt) {
 	validateContacts();
 	validateMessage();
 	
+	
 	if(formValidity == true) {
 		document.getElementById("errorText").innerHTML = "";
 		document.getElementById("errorText").style. display = "none";
@@ -209,10 +212,52 @@ function validateForm(evt) {
 	}
 }
 
+//add a function to check to see which options are selected and put them in an array
+function checkOptions(event) {
+	//get the list box
+	var sel = document.getElementById("selEvent"); // get the list box
+	
+	var opt;
+    for ( var i = 0; i < sel.length; i++ ) {
+        opt = sel[i]; //get the current one
+        if ( opt.selected === true ) {
+			//add it to the array
+            ideaList.push(opt.value);
+			
+			// add option value to list in  section
+			var newIdea = document.createElement("li");
+			newIdea.innerHTML = opt.value;
+			document.getElementById("profileIdeas").appendChild(newIdea);
+		  // make  section 
+		  document.getElementById("profile").style.display = "block";
+		  document.getElementById("ideasSection").style.display = "block";
+	    } else { // if item has just been unselected
+			  var listItems = document.querySelectorAll("#profileIdeas li");
+			  for (var j = 0; j < listItems.length; j++) {
+				 if (listItems[j].innerHTML === opt.value) {
+					 ideaList.splice(j, 1);  //remove the one at position i called if uncheck the box
+
+					// remove lodging from  list
+					listItems[j].parentNode.removeChild(listItems[j]);
+					break;
+				 }
+			  }
+		}
+    }
+	
+}
+//add a function to display the array in the 
 
 	
 	function createEventListeners(){
 	
+		//add an event handler for the listbox
+		var eventtypes = document.getElementById("selEvent");
+		if(eventtypes.addEventListener)
+			eventtypes.addEventListener("change", checkOptions, false);
+		else if (eventtypes.attachEvent)
+			eventtypes.attachEvent("onchange", checkOptions);
+		
 		//add an event to see if someone types in some text
 		var messageBox = document.getElementById("customText");
 		if(messageBox.addEventListener)
