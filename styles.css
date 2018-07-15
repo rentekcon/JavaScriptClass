@@ -203,3 +203,18 @@ fieldset.checks textarea {
 .webP {
 	margin: 0px 10px;
 }
+
+/* turn off the profile view when nothing checked */
+#profile, #usernameSection, #emailSection, #lodgingsSection {
+   display: none;
+}
+
+#options, #interest {
+	text-align: center;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+#interest legend {
+	text-align: center;
+}

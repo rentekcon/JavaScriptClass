@@ -339,3 +339,6 @@ fieldset.text input {
    font-size: 20pt;
 }
 
+video {
+	float: right;
+}
