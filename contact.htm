@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <!--
+      JavaScript 6th Edition
+      COntact Form for Fun things to do in Tempe
+
+      Author: Renee Slattery
+      Date:   June 4, 2018
+
+      Filename: Contact.htm
+	  
+	  The debugging tools that I used were the IE debugger. I set break points in the code to determine
+	  if I got to places in the code. I also used the console output to find syntax errors.
+	  I did use the console.log once because I couldn't figure out what was going on and I did
+	  use the alert boxes to see if I was getting to a function.
+   -->
+   <meta charset="utf-8" />
+   <meta name="viewport" content="width=device-width,initial-scale=1.0">
+   <title>Contact Form</title>
+   <link rel="stylesheet" href="styles.css" />
+	<script src="modernizr.custom.58072.js"></script>
+</head>
+
+<body>
+   <header>
+      <h1>
+        Send Contact info
+      </h1>
+   </header>
+<nav>
+		<a href="index.htm">Home</a> &nbsp; 
+		<a href="tempe.htm">Tempe</a> &nbsp; 
+		<a href="surround.htm">Surrounding Areas</a> &nbsp; 
+		<a href="webSecurity.htm">Web Security</a>
+		<a href="contact.htm">Contact Me</a>
+	</nav>
+   <article>
+      <h2>Contact Form</h2>
+      <form name="formContact">
+        <fieldset id="contactinfo">
+          <legend><span>Contact Information</span></legend>
+          <label for="nameinput">
+            Name
+            <input type="text" id="nameinput" name="name" placeholder="first and last name" />
+          </label>
+          <label for="emailinput">
+            Email
+            <input type="email" id="emailinput" name="email" placeholder="address@example.com"/>
+          </label>
+          <label for="phoneinput">
+            Phone
+            <input type="text" id="phoneinput" name="phone" placeholder="###-###-####"/>
+          </label>
+        </fieldset>
+        <hr/>
+               
+        <fieldset id="submitbutton">
+          <input type="submit" value="Submit"  id="sButton"/>
+        </fieldset>
+     </form>
+   </article>
+   <script>
+   
+	//On the contact page put in place holders for the 
+	function insertPlaceholders() { 
+		if (!Modernizr.input.placeholder) {
+			document.getElementById("nameinput").value = "first and last name";
+			document.getElementById("emailinput").value = "address@example.com";
+			document.getElementById("phoneinput").value = "###-###-####"; 
+		}
+	}
+	
+	//check to see if the data in the name is numeric
+	function checkForm(){
+	
+		//Check to see if there are numbers in the name
+		var numbers = /^[0-9]+$/;
+		var inputname = document.formContact.name;
+		var inputemail = document.formContact.email;
+		var inputphone = document.formContact.phone;
+		try{
+			if(inputname.value.match(numbers))
+				throw "1";
+			//check to see if there are values in the other fieldset
+			else if (inputname.value === "")
+				throw "2";
+			else if(inputemail.value === "")
+				throw "3";
+			else if(inputphone.value === "" || !inputphone.value.match(numbers))
+				throw "4";
+			else
+				alert("I\'ll put you on the mailing list!"); 
+		}
+		catch(message){
+			//display an error, clear out the name on the form and set focus on the name
+			//because it's a button it automatically clears the form
+			//saving for later incase I want to change it.
+			switch(message) {
+				case "1":
+					alert("Numbers are not allowed in a name");
+					//document.formContact.name.value = "";
+					//document.formContact.name.focus();
+					break;
+				case "2":
+					alert("You must enter a name");
+					//document.formContact.name.value = "";
+					//document.formContact.name.focus();
+					break;
+				case "3":
+					alert("You must enter an email address");
+					document.formContact.email.value = "";
+					document.formContact.email.focus();
+					break;
+				case "4":
+					alert("You must enter a phone number");
+					//document.formContact.phone.value = "";
+					//document.formContact.phone.focus();
+					break;	
+				default:
+					alert(message);
+					break;
+			}	
+		}
+		
+	}
+	
+	function createEventListeners(){
+	
+		//add an event listener for the button
+		var sbutton = document.getElementById("sButton"); 
+		if (sbutton.addEventListener) {
+			sbutton.addEventListener("click", checkForm, false);
+		} 
+		else if (sbutton.attachEvent) { 
+			sbutton.attachEvent("onclick", checkForm);
+		}
+	}
+	
+	/* create event listeners and populate the placeholders */
+	function setUpPage() {
+		createEventListeners();
+		insertPlaceholders();
+	}
+
+
+
+	//Put in the event listeners based on compatibility
+	if (window.addEventListener) 
+		window.addEventListener("load",  setUpPage, false);
+	 else if (window.attachEvent) 
+		window.attachEvent("onload", setUpPage);
+	 
+
+	</script>
+</body>
+</html>
