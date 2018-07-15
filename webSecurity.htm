@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <!--
+      JavaScript 6th Edition
+      
+      
+
+      Author: Renee Slattery
+      Date:   Jun 18, 2018
+
+      Filename: webSecurity.htm
+   -->
+   <meta charset="utf-8" />
+   <meta name="viewport" content="width=device-width,initial-scale=1.0">
+   <title>Independent Project</title>
+   <link rel="stylesheet" href="styles.css" />
+   <script src="modernizr.custom.05819.js"></script>
+</head>
+
+<body>
+   <header>
+      <h1>
+         Web Security
+      </h1>
+   </header>
+	<nav>
+		<a href="index.htm">Home</a> &nbsp; 
+		<a href="tempe.htm">Tempe</a> &nbsp; 
+		<a href="surround.htm">Surrounding Areas</a> &nbsp; 
+		<a href="webSecurity.htm">Web Security</a>
+		<a href="contact.htm">Contact Me</a>
+	</nav>
+   <article>
+      <h2>Introduction to Web Security</h2>
+	  <h1 id="subtitle">Navigator and Screen objects</h1>
+	  </br>
+	  
+	  <script>
+			//initialize variables for the objects I'm going to display 
+			var objectTypeN = "Navigator"; 
+			var objectTypeS = "Screen";
+			var objectN1Property = "Web Browser Name"; 
+			var objectN1Value = navigator.appName;
+			var objectN2Property = "Web Browser Version"; 
+			var objectN2Value = navigator.appVersion;
+			var objectN3Property = "operating Platform"; 
+			var objectN3Value = navigator.platform;
+			var objectN4Property = "User agent"; 
+			var objectN4Value = navigator.userAgent;
+			
+			var objectS1Property = "Screen Width"; 
+			var objectS1Value = screen.width;
+			var objectS2Property = "Screen Height"; 
+			var objectS2Value = screen.height;
+			
+		</script>
+		<p class="webP"> JavaScript is a very powerful tool. If someone knows how to use it, they can get information about your 
+		browser and about your screen. If a person wants they can put JavaScript into the innerHTML of a tag and run
+		a virus or mess with your page. Below is a table of some of the different attributes that a JavaScript writer has
+		access to when creating pages.</p> 
+	  <table>
+         <thead>
+            <tr>
+               <th>Object Type</th>
+			   
+               <th>Property</th>
+			   <th>Value</th>
+			   
+            </tr>
+         </thead>
+        <tbody>
+            <tr>
+               <td>
+				<script> document.write(objectTypeN);</script>				
+               </td>
+               <td>
+				<script> document.write(objectN1Property);</script>
+			   </td>
+			   <td>
+				 <script> document.write(objectN1Value);</script>
+			   </td>
+			   
+            </tr>
+            <tr>
+               <td>
+				<script> document.write(objectTypeN);</script>				
+               </td>
+               <td>
+				<script> document.write(objectN2Property);</script>
+			   </td>
+			   <td>
+				 <script> document.write(objectN2Value);</script>
+			   </td>
+			   
+            </tr>
+			<tr>
+               <td>
+				<script> document.write(objectTypeN);</script>				
+               </td>
+               <td>
+				<script> document.write(objectN3Property);</script>
+			   </td>
+			   <td>
+				 <script> document.write(objectN3Value);</script>
+			   </td>
+            </tr>
+			<tr>
+               <td>
+				<script> document.write(objectTypeN);</script>				
+               </td>
+               <td>
+				<script> document.write(objectN4Property);</script>
+			   </td>
+			   <td>
+				 <script> document.write(objectN4Value);</script>
+			   </td>
+            </tr>
+			<tr>
+               <td>
+				<script> document.write(objectTypeS);</script>				
+               </td>
+               <td>
+				<script> document.write(objectS1Property);</script>
+			   </td>
+			   <td>
+				 <script> document.write(objectS1Value);</script>
+			   </td>
+			   
+            </tr>
+			<tr>
+               <td>
+				<script> document.write(objectTypeS);</script>				
+               </td>
+               <td>
+				<script> document.write(objectS2Property);</script>
+			   </td>
+			   <td>
+				 <script> document.write(objectS2Value);</script>
+			   </td>
+			   
+            </tr>
+         </tbody>
+      </table>
+	  </br>
+	  <p class="webP"> 
+	  These are web sites that have information on how to use the web safely. Please read.
+	  </p>
+	  <ul>
+		<li><a href="https://www.helpnetsecurity.com/2010/07/19/10-steps-for-safe-web-surfing/">Help Net Security</a></br>
+			This web site give you 10 steps to be more secure on the web. It's rather brief.    </li>
+		<li><a href="http://www.veracode.com/blog/2013/01/tips-for-secure-web-browsing-cybersecurity-101">Tips for Secure Web Browsing: Cybersecurity 101</a></br>
+			This web site is different from the other one as it goes into phishing, private polies, and banking online.</li>
+		<li><a href="https://www.wikihow.com/Be-Safe-on-the-Internet">How to Be Safe on the Internet</a>  </br>
+			This is on wikiHow and it gives an overview and links to an Internet Safety Cheat Sheet, plus Social Media and other safety tips, including your phone.</li>
+		<li><a href="https://askleo.com/internet_safety_7_steps_to_keeping_your_computer_safe_on_the_internet/">Internet Safety: 7 Steps to Keeping Your Computer Safe on the Internet</a></br>
+			He has good tips and links to more information if his brief information isn't enough.</li>
+		
+	  </ul>
+	
+   </article>
+</body>
+</html>
