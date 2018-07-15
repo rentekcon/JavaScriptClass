@@ -47,5 +47,28 @@
 		</script>
 	
    </article>
+   <article>
+   
+   </article>
+   <script src="air-port-codes-api-min.js"></script>
+   <script>
+	// initialize the apc library
+	var apcs = new apc('single', {key : 'b14fd31ce1'});
+ 
+	// handle successful response
+	apcs.onSuccess = function (data) {
+		console.log(data);
+	};
+ 
+	// handle response error
+	apcs.onError = function (data) {
+		console.log(data.message);
+	};
+ 
+	// makes the request to get the airport data
+	apcs.request('phx');
+	
+	</script>
+
 </body>
 </html>
