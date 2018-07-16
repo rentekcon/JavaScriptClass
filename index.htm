@@ -15,6 +15,7 @@
    <meta name="viewport" content="width=device-width,initial-scale=1.0">
    <title>Independent Project</title>
    <link rel="stylesheet" href="styles.css" />
+   <link rel="stylesheet" href="index.css" />
    <script src="modernizr.custom.05819.js"></script>
 </head>
 
@@ -24,14 +25,25 @@
          Fun and Exciting things to do in and around Tempe
       </h1>
    </header>
-	<nav>
-		<a href="index.htm">Home</a> &nbsp; 
-		<a href="tempe.htm">Tempe</a> &nbsp; 
-		<a href="surround.htm">Surrounding Areas</a> &nbsp; 
-		<a href="webSecurity.htm">Web Security</a>
-		<a href="contact.htm">Contact Me</a>
-		<a href="calcDateDiff.htm">Date Calculator</a>
-	</nav>
+<nav>
+      <ul class="mainmenu">
+         <li><p><a href="index.htm">Home</a></p>
+         </li>
+         <li><p><a href="#">Areas</a></p>
+            <ul>
+               <li><a href="tempe.htm">Tempe</a></li>
+               <li><a href="surround.htm">Surrounding Areas</a></li>
+            </ul>
+         </li>
+         <li><p><a href="#">Other Class related pages</a></p>
+            <ul>
+               <li><a href="webSecurity.htm">Web Security</a></li>
+               <li><a href="calcDateDiff.htm">Date Calculator</a></li>
+            </ul>
+         </li>
+		 <li><p> <a href="contact.htm">Contact Me</a> </p> </li>
+      </ul>
+   </nav>	
    <article>
       <h2>Introduction</h2>
 	  <!-- create an un ordered list AKA bulleted list for the introduction -->
@@ -46,9 +58,10 @@
 			document.write("</ul>");
 		</script>
 	
-   </article>
-   <article>
-   
+  </article>
+
+  <article id="airport">
+	<h1>Local airport Information</h1>
    </article>
    <script src="air-port-codes-api-min.js"></script>
    <script>
@@ -57,12 +70,29 @@
  
 	// handle successful response
 	apcs.onSuccess = function (data) {
+		//loop through the data and put it in the output in the airport article
 		console.log(data);
+		//get the element to append to
+		var list = document.getElementById("airport");
+		var airInfo = document.createElement("p");
+		airInfo.innerHTML = data.airport.name;
+
+		var city = document.createElement("p");
+		city.innerHTML =  data.airport.full_location;
+		
+		var elevation = document.createElement("p");
+		elevation.innerHTML = "Elevation: " + data.airport.elevation;
+		 
+		 list.appendChild(airInfo);
+		 list.appendChild(city);
+		 list.appendChild(elevation);
+
+		
 	};
  
 	// handle response error
 	apcs.onError = function (data) {
-		console.log(data.message);
+		window.alert(data.message);
 	};
  
 	// makes the request to get the airport data
@@ -70,5 +100,7 @@
 	
 	</script>
 
+<script src="jquery-1.11.1.js"></script>
+<script src="script.js"></script>
 </body>
 </html>
