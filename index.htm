@@ -58,8 +58,48 @@
 			document.write("</ul>");
 		</script>
 	
+  </article>
+
+  <article id="airport">
+	<h1>Local airport Information</h1>
    </article>
-   
+   <script src="air-port-codes-api-min.js"></script>
+   <script>
+	// initialize the apc library
+	var apcs = new apc('single', {key : 'b14fd31ce1'});
+ 
+	// handle successful response
+	apcs.onSuccess = function (data) {
+		//loop through the data and put it in the output in the airport article
+		console.log(data);
+		//get the element to append to
+		var list = document.getElementById("airport");
+		var airInfo = document.createElement("p");
+		airInfo.innerHTML = data.airport.name;
+
+		var city = document.createElement("p");
+		city.innerHTML =  data.airport.full_location;
+		
+		var elevation = document.createElement("p");
+		elevation.innerHTML = "Elevation: " + data.airport.elevation;
+		 
+		 list.appendChild(airInfo);
+		 list.appendChild(city);
+		 list.appendChild(elevation);
+
+		
+	};
+ 
+	// handle response error
+	apcs.onError = function (data) {
+		window.alert(data.message);
+	};
+ 
+	// makes the request to get the airport data
+	apcs.request('phx');
+	
+	</script>
+
 <script src="jquery-1.11.1.js"></script>
 <script src="script.js"></script>
 </body>
