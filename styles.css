@@ -218,3 +218,13 @@ fieldset.checks textarea {
 #interest legend {
 	text-align: center;
 }
+
+#airport h1 {
+	
+	font-weight: bold;
+	font-size: 5;
+}
+#airport {
+	text-align: center;
+}
+	
